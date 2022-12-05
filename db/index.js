@@ -1,5 +1,5 @@
 import pg from "pg";
-
+console.log(process.env.DATABASE_URL)
 const databaseUrl = process.env.DATABASE_URL;
 
 if (undefined === databaseUrl) {
