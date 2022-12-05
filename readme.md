@@ -1,2 +1,5 @@
-app to work on baby monitor idea# baby-monitor-BE
-# baby-monitor-BE
+Building an app to monitor Baby activity including feeding, nappy changes, sleeping and weight. 
+
+Using a PERN tech stack, with firebase authentication.
+
+This repo contains code for the Back End
