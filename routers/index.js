@@ -8,13 +8,13 @@ import {
   getChildByParentID,
   getParentsByID,
   updateChild,
-  getFeeding
+  getFeeding,
+  createNewParent
 } from "../models/index.js";
 
 export const router = express.Router();
 
 router.get("/parent", async function (req, res) {
-  console.log(req.headers)
   const parents = await getAllParents();
   res.status(200).json({
     success: true,
@@ -22,13 +22,24 @@ router.get("/parent", async function (req, res) {
   });
 });
 
+router.get("/parentlogin/:id", async function (req, res) {
+  const parentID = req.params.id
+  console.log(parentID)
+  const parents = await createNewParent(parentID);
+  res.status(200).json({
+    success: true,
+    payload: parents,
+  });
+});
+
+
 router.get("/parent/:id", async function (req, res) {
   const parentID = req.params;
-  const parentByID = await getParentsByID(parentID.id);
+ const parentByID = await getParentsByID(parentID.id);
   res.status(200).json({
     sucess: true,
     payload: parentByID,
-  });
+  }); 
 });
 
 router.get("/children", async function (req, res) {
@@ -36,7 +47,7 @@ router.get("/children", async function (req, res) {
 
   res.status(200).json({
     success: true,
-    payload: children,
+    payload: children
   });
 });
 

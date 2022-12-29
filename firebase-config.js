@@ -1,7 +1,6 @@
 
-import {admin} from 'firebase-admin/app'
-
-import serviceAccount from './baby-monitor-private-key.json'
+import admin from 'firebase-admin'
+import serviceAccount from './baby-monitor-private-key.json' assert {type: "json"}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -9,3 +8,4 @@ admin.initializeApp({
 
 
 export default admin
+

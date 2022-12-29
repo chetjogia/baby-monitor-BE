@@ -8,12 +8,22 @@ export async function getAllParents() {
 }
 
 export async function getParentsByID(id) {
-  const sqlQuery = "SELECT * FROM parents WHERE parent_id = $1;";
+  const sqlQuery = "SELECT * FROM parents WHERE firebase_id = $1;";
   const sqlDependency = [id];
   const result = await pool.query(sqlQuery, sqlDependency);
   const parentByID = result.rows;
   return parentByID;
 }
+
+export async function createNewParent(id){
+  const sqlQuery = "INSERT INTO parents(firebase_id, first_name,last_name,email_address,profile_picture) SELECT $1, 'New', 'User', 'new@user.com', 'https://i.stack.imgur.com/l60Hf.png' WHERE NOT EXISTS (SELECT firebase_id FROM parents WHERE firebase_id = $1) RETURNING *;";
+  const sqlDependency = [id];
+  const result = await pool.query(sqlQuery, sqlDependency);
+  const parentByID = result.rows;
+  return parentByID;
+
+}
+
 
 export async function getAllChildren() {
   const sqlQuery = "SELECT * FROM children;";
