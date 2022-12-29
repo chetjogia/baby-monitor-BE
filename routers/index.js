@@ -8,11 +8,13 @@ import {
   getChildByParentID,
   getParentsByID,
   updateChild,
+  getFeeding
 } from "../models/index.js";
 
 export const router = express.Router();
 
 router.get("/parent", async function (req, res) {
+  console.log(req.headers)
   const parents = await getAllParents();
   res.status(200).json({
     success: true,
@@ -83,5 +85,13 @@ router.delete("/children/:id", async function (req, res) {
   res.status(200).json({
     sucess: true,
     payload: deleteChildByID,
+  });
+});
+
+router.get("/feeding", async function (req, res) {
+  const feeding = await getFeeding();
+  res.status(200).json({
+    success: true,
+    payload: feeding,
   });
 });

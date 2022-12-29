@@ -72,10 +72,26 @@ export async function deleteChild(id) {
   return deletedChild;
 }
 
+export async function createDefaultProfile(id) {
+  const sqlQuery =
+    "INSERT INTO parents (firebase_id, first_name,last_name,email_address,profile_picture) VALUES ($1,'New','User','newuser@gmail.com','https://www.nicepng.com/png/detail/73-730154_open-default-profile-picture-png.png') RETURNING *";
+  const sqlDependency = [id];
+  const result = await pool.query(sqlQuery, sqlDependency);
+  const defaultProfile = result.rows;
+  return defaultProfile;
+}
+
 export async function getChildByParentID(id) {
   const sqlQuery = "SELECT * FROM children WHERE parent_id = $1;";
   const sqlDependency = [id];
   const result = await pool.query(sqlQuery, sqlDependency);
   const childrenByParentID = result.rows;
   return childrenByParentID;
+}
+
+export async function getFeeding() {
+  const sqlQuery = "SELECT * FROM feeding;";
+  const result = await pool.query(sqlQuery);
+  const feeding = result.rows;
+  return feeding;
 }

@@ -1,6 +1,6 @@
 CREATE TABLE parents (
   parent_id SERIAL PRIMARY KEY,
-  google_id TEXT,
+  firebase_id TEXT,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
   email_address VARCHAR(100),
@@ -10,8 +10,7 @@ CREATE TABLE parents (
 INSERT INTO parents
     (firebase_id, first_name,last_name,email_address,profile_picture)
 VALUES
-   ('
-"ZPWGseKYLUXSoadmiixf7SWZdHJ3','chet','jogia','chetjogia@gmail.com','https://static.wixstatic.com/media/25c1eb_4f7a7b6befbd4b8db772a7780b83f8cf~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/50964901_2030635707241250_63033694665496.jpg'),
+   ('ZPWGseKYLUXSoadmiixf7SWZdHJ3','chet','jogia','chetjogia@gmail.com','https://static.wixstatic.com/media/25c1eb_4f7a7b6befbd4b8db772a7780b83f8cf~mv2.jpg/v1/fill/w_500,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/50964901_2030635707241250_63033694665496.jpg'),
 
 
 
