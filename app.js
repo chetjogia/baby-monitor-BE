@@ -8,7 +8,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-//app.use(decodeToken)
+app.use(decodeToken)
 app.use("/api/babymonitor", router);
 
 

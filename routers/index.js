@@ -22,10 +22,9 @@ router.get("/parent", async function (req, res) {
   });
 });
 
-router.get("/parentlogin/:id", async function (req, res) {
-  const parentID = req.params.id
-  console.log(parentID)
-  const parents = await createNewParent(parentID);
+router.post("/parentlogin/", async function (req, res) {
+  console.log(req.body)
+  const parents = await createNewParent(req.body);
   res.status(200).json({
     success: true,
     payload: parents,
